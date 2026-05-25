@@ -1,0 +1,186 @@
+/**
+ * my Rofi theme
+ *
+ * Layout from README.md:
+ * - Two panes.
+ * - Left pane shows ~/Pictures/rofi_wallpaper.jpg.
+ * - Right pane has the search bar at the top and the application list below.
+ *
+ * The source picture is documented as 1080x2340. The left pane below keeps
+ * that aspect ratio when scaled to the 900px window height.
+ */
+
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    display-drun: "Apps";
+    display-run: "Run";
+    display-window: "Windows";
+}
+
+* {
+    bg:          #111318;
+    panel:       #1a1d24;
+    panel-soft:  #232833;
+    fg:          #e8eaf0;
+    muted:       #8f98aa;
+    accent:      #d8b56d;
+    accent-fg:   #15120a;
+    urgent:      #d45d5d;
+
+    background-color: transparent;
+    text-color: var(fg);
+    font: "JetBrains Mono 13";
+}
+
+window {
+    width: 1140px;
+    height: 900px;
+    location: center;
+    anchor: center;
+    border: 0;
+    border-radius: 12px;
+    padding: 0;
+    background-color: var(bg);
+}
+
+mainbox {
+    orientation: horizontal;
+    children: [ "wallpaper", "right-pane" ];
+    spacing: 0;
+    padding: 0;
+    background-color: var(bg);
+}
+
+wallpaper {
+    width: 415px;
+    expand: false;
+    background-image: url("~/Pictures/rofi_wallpaper.jpg", height);
+    background-color: var(panel);
+}
+
+right-pane {
+    orientation: vertical;
+    children: [ "inputbar", "message", "listview" ];
+    spacing: 14px;
+    padding: 28px;
+    background-color: var(bg);
+}
+
+inputbar {
+    children: [ "prompt", "entry" ];
+    expand: false;
+    spacing: 12px;
+    padding: 12px 14px;
+    border: 1px;
+    border-color: #2d3340;
+    border-radius: 8px;
+    background-color: var(panel);
+}
+
+prompt {
+    expand: false;
+    padding: 0 2px 0 0;
+    text-color: var(accent);
+}
+
+entry {
+    placeholder: "Search applications";
+    placeholder-color: var(muted);
+    cursor: text;
+    text-color: var(fg);
+    background-color: transparent;
+}
+
+message {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+textbox {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background-color: var(panel-soft);
+    text-color: var(fg);
+}
+
+listview {
+    columns: 1;
+    lines: 12;
+    cycle: true;
+    dynamic: true;
+    fixed-height: false;
+    scrollbar: true;
+    spacing: 8px;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+element {
+    orientation: horizontal;
+    spacing: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: var(fg);
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: var(fg);
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: var(fg);
+}
+
+element selected.normal {
+    background-color: var(accent);
+    text-color: var(accent-fg);
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color: transparent;
+    text-color: var(urgent);
+}
+
+element selected.urgent {
+    background-color: var(urgent);
+    text-color: var(fg);
+}
+
+element normal.active,
+element alternate.active {
+    background-color: transparent;
+    text-color: var(accent);
+}
+
+element selected.active {
+    background-color: var(accent);
+    text-color: var(accent-fg);
+}
+
+element-icon {
+    size: 28px;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element-text {
+    vertical-align: 0.5;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+scrollbar {
+    width: 5px;
+    padding: 0;
+    handle-width: 5px;
+    handle-color: #50596a;
+    background-color: transparent;
+    border: 0;
+}
